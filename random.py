@@ -16,34 +16,40 @@ class plexi:
     async def random(self, ctx, choice: str = None, num1: int = None, num2: int = None):
       try:
         if choice == 'below':
-          random_choice = random.randint(0, num1)
-          embed = discord.Embed(
-              colour = discord.Colour.blurple()
-          )
-          embed.set_author(name='RANDOM')
-          embed.set_thumbnail(url='https://cdn.discordapp.com/attachments/478598485172813832/488303039074140180/image0.gif')
-          embed.add_field(name=f'Choice -> `{choice}`', value='** **', inline=False)
-          embed.add_field(name=f'Input -> `{num1}`', value='** **', inline=False)
-          embed.add_field(name=f'Random number -> `{random_choice}`', value='** **', inline=False)
-          embed.set_footer(text=f'For {ctx.author.name}', icon_url=ctx.author.avatar_url)
-          await ctx.send(embed=embed)
+          if num1 < 0:
+            await ctx.send(':x: Need a positive number!')
+          else:
+            random_choice = random.randint(0, num1)
+            embed = discord.Embed(
+                colour = discord.Colour.blurple()
+            )
+            embed.set_author(name='RANDOM')
+            embed.set_thumbnail(url='https://cdn.discordapp.com/attachments/478598485172813832/488303039074140180/image0.gif')
+            embed.add_field(name=f'Choice -> `{choice}`', value='** **', inline=False)
+            embed.add_field(name=f'Input -> `{num1}`', value='** **', inline=False)
+            embed.add_field(name=f'Random number -> `{random_choice}`', value='** **', inline=False)
+            embed.set_footer(text=f'For {ctx.author.name}', icon_url=ctx.author.avatar_url)
+            await ctx.send(embed=embed)
         elif choice == "above":
-          abo = (num1+999999999)
-          random_choice = random.randint(num1, abo)
-          eabove = discord.Embed(
-              colour = discord.Colour.blurple()
-          )
-          eabove.set_author(name='RANDOM')
-          eabove.set_thumbnail(url='https://cdn.discordapp.com/attachments/478598485172813832/488303039074140180/image0.gif')
-          eabove.add_field(name=f'Choice -> `{choice}`', value='** **', inline=False)
-          eabove.add_field(name=f'Input -> `{num1}`', value='** **', inline=False)
-          eabove.add_field(name=f'Random number -> `{random_choice}`', value='** **', inline=False)
-          eabove.set_footer(text=f'For {ctx.author.name}', icon_url=ctx.author.avatar_url)
-          await ctx.send(embed=eabove)
+          if num1 < 0:
+            await ctx.send(':x: Need a positive number!')
+          else:
+            abo = (num1+999999999)
+            random_choice = random.randint(num1, abo)
+            eabove = discord.Embed(
+                colour = discord.Colour.blurple()
+            )
+            eabove.set_author(name='RANDOM')
+            eabove.set_thumbnail(url='https://cdn.discordapp.com/attachments/478598485172813832/488303039074140180/image0.gif')
+            eabove.add_field(name=f'Choice -> `{choice}`', value='** **', inline=False)
+            eabove.add_field(name=f'Input -> `{num1}`', value='** **', inline=False)
+            eabove.add_field(name=f'Random number -> `{random_choice}`', value='** **', inline=False)
+            eabove.set_footer(text=f'For {ctx.author.name}', icon_url=ctx.author.avatar_url)
+            await ctx.send(embed=eabove)
         elif choice == "between":
             if num2 != None:
                 if num1 < 0 or num2 < 0:
-                    await ctx.send(':x: Please provide a posotive number')
+                    await ctx.send(':x: Please provide a positive number')
                 else:
                     if num1 < num2:
                       random_choice = random.randint(num1, num2)
