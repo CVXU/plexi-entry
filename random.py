@@ -41,17 +41,20 @@ class plexi:
           eabove.set_footer(text=f'For {ctx.author.name}', icon_url=ctx.author.avatar_url)
           await ctx.send(embed=eabove)
         elif choice == "between":
-          random_choice = random.randint(num1, num2)
-          ebetween = discord.Embed(
-              colour = discord.Colour.blurple()
-          )
-          ebetween.set_author(name='RANDOM')
-          ebetween.set_thumbnail(url='https://cdn.discordapp.com/attachments/478598485172813832/488303039074140180/image0.gif')
-          ebetween.add_field(name=f'Choice -> `{choice}`', value='** **', inline=False)
-          ebetween.add_field(name=f'Input -> `{num1}`, `{num2}`', value='** **', inline=False)
-          ebetween.add_field(name=f'Random number -> `{random_choice}`', value='** **', inline=False)
-          ebetween.set_footer(text=f'For {ctx.author.name}', icon_url=ctx.author.avatar_url)
-          await ctx.send(embed=ebetween)
+            if num1 < num2:
+              random_choice = random.randint(num1, num2)
+              ebetween = discord.Embed(
+                  colour = discord.Colour.blurple()
+              )
+              ebetween.set_author(name='RANDOM')
+              ebetween.set_thumbnail(url='https://cdn.discordapp.com/attachments/478598485172813832/488303039074140180/image0.gif')
+              ebetween.add_field(name=f'Choice -> `{choice}`', value='** **', inline=False)
+              ebetween.add_field(name=f'Input -> `{num1}`, `{num2}`', value='** **', inline=False)
+              ebetween.add_field(name=f'Random number -> `{random_choice}`', value='** **', inline=False)
+              ebetween.set_footer(text=f'For {ctx.author.name}', icon_url=ctx.author.avatar_url)
+              await ctx.send(embed=ebetween)
+            else:
+              await ctx.send(f':x: {ctx.author.mention}, The 1st number needs to be smaller than the second!')
         elif choice == "float":
           random_choice1 = random.randint(0, 10000)
           random_choice2 = random.randint(0, 1000)
