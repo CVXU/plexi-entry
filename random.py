@@ -41,7 +41,7 @@ class plexi:
           eabove.set_footer(text=f'For {ctx.author.name}', icon_url=ctx.author.avatar_url)
           await ctx.send(embed=eabove)
         elif choice == "between":
-            if num2 != None or num1 != None:
+            if num2 != None:
                 if num1 < 0 or num2 < 0:
                     await ctx.send(':x: Please provide a posotive number')
                 else:
@@ -70,8 +70,8 @@ class plexi:
                       ebetween_swap.add_field(name=f'Random number -> `{random_choice}`', value='** **', inline=False)
                       ebetween_swap.set_footer(text=f'For {ctx.author.name}', icon_url=ctx.author.avatar_url)
                       await ctx.send(embed=ebetween_swap)
-          else:
-            await ctx.send(':x: Need 2 numbers!')
+            else:
+              await ctx.send(':x: Need 2 numbers!')
         elif choice == "float":
           random_choice1 = random.randint(0, 10000)
           random_choice2 = random.randint(0, 1000)
