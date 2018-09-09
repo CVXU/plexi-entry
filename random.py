@@ -41,30 +41,38 @@ class plexi:
           eabove.set_footer(text=f'For {ctx.author.name}', icon_url=ctx.author.avatar_url)
           await ctx.send(embed=eabove)
         elif choice == "between":
-            if num1 < num2:
-              random_choice = random.randint(num1, num2)
-              ebetween = discord.Embed(
-                  colour = discord.Colour.blurple()
-              )
-              ebetween.set_author(name='RANDOM')
-              ebetween.set_thumbnail(url='https://cdn.discordapp.com/attachments/478598485172813832/488303039074140180/image0.gif')
-              ebetween.add_field(name=f'Choice -> `{choice}`', value='** **', inline=False)
-              ebetween.add_field(name=f'Input -> `{num1}`, `{num2}`', value='** **', inline=False)
-              ebetween.add_field(name=f'Random number -> `{random_choice}`', value='** **', inline=False)
-              ebetween.set_footer(text=f'For {ctx.author.name}', icon_url=ctx.author.avatar_url)
-              await ctx.send(embed=ebetween)
-            else:
-              random_choice = random.randint(num2, num1)
-              ebetween_swap = discord.Embed(
-                  colour = discord.Colour.blurple()
-              )
-              ebetween_swap.set_author(name='RANDOM')
-              ebetween_swap.set_thumbnail(url='https://cdn.discordapp.com/attachments/478598485172813832/488303039074140180/image0.gif')
-              ebetween_swap.add_field(name=f'Choice -> `{choice}`', value='** **', inline=False)
-              ebetween_swap.add_field(name=f'Input -> `{num1}`, `{num2}`', value='** **', inline=False)
-              ebetween_swap.add_field(name=f'Random number -> `{random_choice}`', value='** **', inline=False)
-              ebetween_swap.set_footer(text=f'For {ctx.author.name}', icon_url=ctx.author.avatar_url)
-              await ctx.send(embed=ebetween_swap)
+            if num2 != None:
+                if num1 < 0 or num2 < 0:
+                    await ctx.send(':x: Please provide a posotive number')
+                else:
+                    if num1 < num2:
+                      random_choice = random.randint(num1, num2)
+                      ebetween = discord.Embed(
+                          colour = discord.Colour.blurple()
+                      )
+                      ebetween.set_author(name='RANDOM')
+                      ebetween.set_thumbnail(url='https://cdn.discordapp.com/attachments/478598485172813832/488303039074140180/image0.gif')
+                      ebetween.add_field(name=f'Choice -> `{choice}`', value='** **', inline=False)
+                      ebetween.add_field(name=f'Input -> `{num1}`, `{num2}`', value='** **', inline=False)
+                      ebetween.add_field(name=f'Random number -> `{random_choice}`', value='** **', inline=False)
+                      ebetween.set_footer(text=f'For {ctx.author.name}', icon_url=ctx.author.avatar_url)
+                      await ctx.send(embed=ebetween)
+                    else:
+                      await ctx.send(f':x: {ctx.author.mention}, You need 2 numbers!')
+                  else:
+                    random_choice = random.randint(num2, num1)
+                    ebetween_swap = discord.Embed(
+                        colour = discord.Colour.blurple()
+                    )
+                    ebetween_swap.set_author(name='RANDOM')
+                    ebetween_swap.set_thumbnail(url='https://cdn.discordapp.com/attachments/478598485172813832/488303039074140180/image0.gif')
+                    ebetween_swap.add_field(name=f'Choice -> `{choice}`', value='** **', inline=False)
+                    ebetween_swap.add_field(name=f'Input -> `{num1}`, `{num2}`', value='** **', inline=False)
+                    ebetween_swap.add_field(name=f'Random number -> `{random_choice}`', value='** **', inline=False)
+                    ebetween_swap.set_footer(text=f'For {ctx.author.name}', icon_url=ctx.author.avatar_url)
+                    await ctx.send(embed=ebetween_swap)
+          else:
+            await ctx.send(':x: Need 2 numbers!')
         elif choice == "float":
           random_choice1 = random.randint(0, 10000)
           random_choice2 = random.randint(0, 1000)
